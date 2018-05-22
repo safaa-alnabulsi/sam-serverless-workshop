@@ -6,5 +6,7 @@ while ! curl localhost:9324 &>/dev/null
 done
 echo "Docker is up and running!"
 
+ curl 'http://localhost:9324/queue/source?Action=SendMessage&MessageBody={"action":"message_1"}'
+ curl 'http://localhost:9324/queue/source?Action=SendMessage&MessageBody={"action":"message_2"}'
 
-docker stop docker
+docker stop docker || true && docker rm docker || true
