@@ -13,32 +13,32 @@ Globals:
 
 Resources:
 
-    HelloWorldFunction:
+    MoveMessagesFunction:
         Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
         Properties:
-            CodeUri: hello_world/
+            CodeUri: sqs_msgs_mover/
             Handler: app.lambda_handler
             Runtime: nodejs8.10
             Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
                 Variables:
                     PARAM1: VALUE
             Events:
-                HelloWorld:
+                MoveMessages:
                     Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
                     Properties:
-                        Path: /hello
+                        Path: /run
                         Method: get
 
 Outputs:
 
-    HelloWorldApi:
-      Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+    MoveMessagesApi:
+      Description: "API Gateway endpoint URL for Prod stage for MoveMessages function"
+      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/run/"
 
-    HelloWorldFunction:
-      Description: "Hello World Lambda Function ARN"
-      Value: !GetAtt HelloWorldFunction.Arn
+    MoveMessagesFunction:
+      Description: "MoveMessages Lambda Function ARN"
+      Value: !GetAtt MoveMessagesFunction.Arn
 
-    HelloWorldFunctionIamRole:
-      Description: "Implicit IAM Role created for Hello World function"
-      Value: !GetAtt HelloWorldFunctionRole.Arn
+    MoveMessagesFunctionIamRole:
+      Description: "Implicit IAM Role created for MoveMessages function"
+      Value: !GetAtt MoveMessagesFunctionRole.Arn

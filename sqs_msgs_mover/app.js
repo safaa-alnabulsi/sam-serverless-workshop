@@ -47,7 +47,6 @@ function sendMessage(queueUrl, message, callback) {
     sqs.sendMessage(params, callback);
 }
 
-
 function deleteMessage(message, queueUrl) {
     var params = {
         QueueUrl: queueUrl,
@@ -85,7 +84,6 @@ function moveMessages(srcQueueURL, targetQueueURL) {
          }
     });
 }
-
 
 exports.lambda_handler = async(event, context, callback) => {
     sayHello('Hi tesssst', callback);

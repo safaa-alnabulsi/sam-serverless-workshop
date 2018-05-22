@@ -47,10 +47,10 @@ If the previous command ran successfully you should now be able to hit the follo
 ```yaml
 ...
 Events:
-    HelloWorld:
+    MoveMessages:
         Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
         Properties:
-            Path: /hello
+            Path: /run
             Method: get
 ```
 
@@ -63,7 +63,7 @@ AWS Lambda NodeJS runtime requires a flat folder with all dependencies including
     FirstFunction:
         Type: AWS::Serverless::Function
         Properties:
-            CodeUri: hello_world/
+            CodeUri: sqs_msgs_mover/
             ...
 ```
 
@@ -106,7 +106,7 @@ aws cloudformation describe-stacks \
 We use `jest` for testing our code and it is already added in `package.json` under `scripts`, so that we can simply run the following command to run our tests:
 
 ```bash
-cd hello_world
+cd sqs_msgs_mover
 npm run test
 ```
 
