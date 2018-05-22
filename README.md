@@ -1,11 +1,11 @@
-# sam-nodejs
+# messages_mover
 
-This is a sample template for sam-nodejs - Below is a brief explanation of what we have generated for you:
+This is a sample template for messages_mover - Below is a brief explanation of what we have generated for you:
 
 ```bash
 .
 ├── README.md                   <-- This instructions file
-├── hello_world                 <-- Source code for a lambda function
+├── sqs_msgs_mover                 <-- Source code for a lambda function
 │   ├── app.js                  <-- Lambda function code
 │   ├── package.json            <-- NodeJS dependencies
 │   └── tests                   <-- Unit tests
@@ -27,7 +27,7 @@ This is a sample template for sam-nodejs - Below is a brief explanation of what 
 In this example we use `npm` but you can use `yarn` if you prefer to manage NodeJS dependencies:
 
 ```bash
-cd hello_world
+cd sqs_msgs_mover
 npm install
 cd ../
 ```
@@ -87,7 +87,7 @@ Next, the following command will create a Cloudformation Stack and deploy your S
 ```bash
 sam deploy \
     --template-file packaged.yaml \
-    --stack-name sam-nodejs \
+    --stack-name messages_mover \
     --capabilities CAPABILITY_IAM
 ```
 
@@ -97,7 +97,7 @@ After deployment is complete you can run the following command to retrieve the A
 
 ```bash
 aws cloudformation describe-stacks \
-    --stack-name sam-nodejs \
+    --stack-name messages_mover \
     --query 'Stacks[].Outputs'
 ``` 
 
@@ -124,12 +124,12 @@ sam package \
 
 sam deploy \
     --template-file packaged.yaml \
-    --stack-name sam-nodejs \
+    --stack-name messages_mover \
     --capabilities CAPABILITY_IAM \
     --parameter-overrides MyParameterSample=MySampleValue
 
 aws cloudformation describe-stacks \
-    --stack-name sam-nodejs --query 'Stacks[].Outputs'
+    --stack-name messages_mover --query 'Stacks[].Outputs'
 ```
 
 **NOTE**: Alternatively this could be part of package.json scripts section.
