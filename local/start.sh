@@ -14,13 +14,12 @@ echo "Docker is up and running!"
 
 echo 'Creating messages in source queue'
 curl 'http://localhost:9324/queue/source?Action=SendMessage&MessageBody={"action":"message_1"}' > /dev/null
-echo 'Creating messages in target queue'
 curl 'http://localhost:9324/queue/source?Action=SendMessage&MessageBody={"action":"message_2"}' > /dev/null
 
 current_dir=$PWD
 echo 'INVOKING LAMBDA LOCALLY....'
 cd ..
-sam local generate-event schedule | sam local invoke --docker-network message-mover
+sam local generate-event schedule | sam local invoke --docker-network message-mover --env-vars ./env.json
 
 cd $current_dir;
 
