@@ -1,6 +1,6 @@
-# messages_mover
+# messages-mover
 
-This is a sample template for messages_mover - Below is a brief explanation of what we have generated for you:
+This is a sample template for messages-mover - Below is a brief explanation of what we have generated for you:
 
 ```bash
 .
@@ -87,7 +87,7 @@ Next, the following command will create a Cloudformation Stack and deploy your S
 ```bash
 sam deploy \
     --template-file packaged.yaml \
-    --stack-name messages_mover \
+    --stack-name messages-mover \
     --capabilities CAPABILITY_IAM
 ```
 
@@ -97,7 +97,7 @@ After deployment is complete you can run the following command to retrieve the A
 
 ```bash
 aws cloudformation describe-stacks \
-    --stack-name messages_mover \
+    --stack-name messages-mover \
     --query 'Stacks[].Outputs'
 ``` 
 
@@ -124,12 +124,12 @@ sam package \
 
 sam deploy \
     --template-file packaged.yaml \
-    --stack-name messages_mover \
+    --stack-name messages-mover \
     --capabilities CAPABILITY_IAM \
     --parameter-overrides MyParameterSample=MySampleValue
 
 aws cloudformation describe-stacks \
-    --stack-name messages_mover --query 'Stacks[].Outputs'
+    --stack-name messages-mover --query 'Stacks[].Outputs'
 ```
 
 **NOTE**: Alternatively this could be part of package.json scripts section.

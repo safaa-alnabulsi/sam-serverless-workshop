@@ -31,18 +31,13 @@ Resources:
                     STAGE: !Ref Stage
 
             Events:
+                # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
                 MoveMessages:
-                    Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+                    Type: Schedule
                     Properties:
-                        Path: /run
-                        Method: get
+                        Schedule: rate(2 minutes)
 
 Outputs:
-
-    MoveMessagesApi:
-      Description: "API Gateway endpoint URL for Prod stage for MoveMessages function"
-      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/run/"
-
     MoveMessagesFunction:
       Description: "MoveMessages Lambda Function ARN"
       Value: !GetAtt MoveMessagesFunction.Arn
