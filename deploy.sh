@@ -27,4 +27,4 @@ sam deploy \
 	--template-file ./packaged.yaml \
 	--stack-name ${LAMBDA_STACK_NAME} \
 	--capabilities CAPABILITY_IAM \
-	--parameter-overrides  SourceQueueUrl=${SourceQueueUrl} TargetQueueUrl=${TargetQueueUrl}
+	--parameter-overrides  SourceQueueUrl="${SourceQueueUrl}" TargetQueueUrl="${TargetQueueUrl}"

@@ -34,6 +34,22 @@ Resources:
                     Properties:
                         Schedule: rate(2 minutes)
 
+    MoveMessagesFunctionSQSPermission:
+        Type: "AWS::IAM::Policy"
+        Properties:
+            PolicyName: "root"
+            PolicyDocument:
+                Version: "2012-10-17"
+                Statement:
+                - Action:
+                  - sqs:SendMessage
+                  - sqs:ReceiveMessage
+                  - sqs:DeleteMessage
+                  Effect: Allow
+                  Resource: '*'
+            Roles:
+                - !Ref MoveMessagesFunctionRole # Sample policy to demonstrate Implicit IAM Role created with SAM
+
 Outputs:
     MoveMessagesFunction:
       Description: "MoveMessages Lambda Function ARN"
