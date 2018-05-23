@@ -24,7 +24,26 @@ sam local generate-event schedule | sam local invoke --docker-network message-mo
 cd $current_dir;
 
 echo '----------------------------------'
+echo "GETTING NUMBER OF MESSAGES IN QUEUE...."
+
+
+RESPONSE=curl http://localhost:9324/queue/source\?Action\=GetQueueAttributes\&AttributeName.1\=ApproximateNumberOfMessages 2> /dev/null | grep Value | sed 's/[^0-9]*//g'
+
+
+echo '----------------------------------'
 echo "CLEANING UP...."
 
 docker stop sqs-mock || true && docker rm sqs-mock || true
 docker network rm message-mover > /dev/null
+
+echo '----------------------------------'
+echo "VERIFYING RESPONSE...."
+
+if [ "$RESPONSE" = "2" ]
+then
+echo "SUCCESS"
+exit 0
+else 
+echo "FAIL"
+exit 1
+fi
