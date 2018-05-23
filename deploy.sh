@@ -16,7 +16,6 @@ cd ..
 SourceQueueUrl=$(aws cloudformation describe-stacks --stack-name=${QUEUE_STACK_NAME} --query "Stacks[0].Outputs[?OutputKey=='SourceQueueUrl'].OutputValue" --out text)
 TargetQueueUrl=$(aws cloudformation describe-stacks --stack-name=${QUEUE_STACK_NAME} --query "Stacks[0].Outputs[?OutputKey=='TargetQueueUrl'].OutputValue" --out text)
 
-sam package  --template-file ./template.yaml --output-template-file packaged.yaml --s3-bucket ${BUCKET_NAME}
 
 sam package \
 	--template-file template.yaml \
