@@ -2,8 +2,9 @@ const axios = require('axios')
 const url = 'http://checkip.amazonaws.com/';
 let response;
 var AWS_REGION = "eu-west-1"
-var SOURCE_QUEUE_URL = "First Queue URL"
-var TARGET_QUEUE_URL = "Second Queue URL"
+var SOURCE_QUEUE_URL = process.env.SOURCE_QUEUE_URL
+var TARGET_QUEUE_URL = process.env.TARGET_QUEUE_URL
+var STAGE = process.env.STAGE
 
 // Load the AWS SDK for Node.js
 var AWS = require('aws-sdk');
@@ -87,5 +88,36 @@ function moveMessages(srcQueueURL, targetQueueURL) {
 
 exports.lambda_handler = async(event, context, callback) => {
     sayHello('Hi tesssst', callback);
+
+
+    var params = {
+        DelaySeconds: 10,
+        MessageAttributes: {
+            "Title": {
+                DataType: "String",
+                StringValue: "Testing my lambda Tooooday"
+            },
+
+        },
+        MessageBody: "Test from serverless workshop TTOOODAY",
+        QueueUrl: SOURCE_QUEUE_URL
+    };
+
+    sqs.sendMessage(params, function(err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            console.log("Success", data.MessageId);
+        }
+    });
+
+    sqs.sendMessage(params, function(err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            console.log("Success", data.MessageId);
+        }
+    });
+
     moveMessages(SOURCE_QUEUE_URL, TARGET_QUEUE_URL)
 };
