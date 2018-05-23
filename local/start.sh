@@ -26,9 +26,9 @@ cd $current_dir;
 echo '----------------------------------'
 echo "GETTING NUMBER OF MESSAGES IN QUEUE...."
 
-sleep 1
+sleep 10
 
-RESPONSE=$(curl http://localhost:9324/queue/source\?Action\=GetQueueAttributes\&AttributeName.1\=ApproximateNumberOfMessages 2> /dev/null | grep Value | sed 's/[^0-9]*//g')
+RESPONSE=$(curl http://localhost:9324/queue/target\?Action\=GetQueueAttributes\&AttributeName.1\=ApproximateNumberOfMessages 2> /dev/null | grep Value | sed 's/[^0-9]*//g')
 
 echo "Got $RESPONSE messages."
 
