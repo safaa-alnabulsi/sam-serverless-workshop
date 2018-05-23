@@ -6,5 +6,5 @@ stacks:
     template-url: ./template-packaged.yaml
     timeout: 1200
     parameters:
-      SourceQueueURL: !Ref SafaaSourceQueue
-      TargetQueueURL: !Ref SafaaTargetQueue
+      SourceQueueURL: !Ref SourceQueue
+      TargetQueueURL: !Ref TargetQueue

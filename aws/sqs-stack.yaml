@@ -1,20 +1,14 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: SQS source and target for serverless workshop
 Resources:
-    SafaaSourceQueue:
+    SourceQueue:
       Type: "AWS::SQS::Queue"
-    SafaaTargetQueue:
+    TargetQueue:
       Type: "AWS::SQS::Queue"
 Outputs:
-    SafaaSourceQueueArn:
-      Description: "SafaaSourceQueue Arn"
-      Value: !GetAtt SafaaSourceQueue.Arn
-    SafaaTargetQueueArn:
-      Description: "SafaaTargetQueue Arn"
-      Value: !GetAtt SafaaTargetQueue.Arn
-    SafaaSourceQueueUrl:
-      Description: "SafaaSourceQueue Url"
-      Value: !Ref SafaaSourceQueue
-    SafaaTargetQueueUrl:
-      Description: "SafaaTargetQueue Url"
-      Value: !Ref SafaaTargetQueue
+    SourceQueueUrl:
+      Description: "SourceQueue Url"
+      Value: !Ref SourceQueue
+    TargetQueueUrl:
+      Description: "TargetQueue Url"
+      Value: !Ref TargetQueue
