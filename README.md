@@ -1,9 +1,12 @@
 # messages-mover
 This lambda basically moves messages from Source Queue to Target Queue without doing any process on the messages.
-#### Local development:
+### Local development:
   check [local folder](local/README.md)
-#### Deploy to your account:
-  check [deploy.sh](deploy.sh) file or the [Jenkinsfile](Jenkinsfile)
+### Deploy to your account:
+  Check [deploy.sh](deploy.sh) file
+### Pipeline:
+  Check [Jenkinsfile](Jenkinsfile), this needs to be inhanced and maybe the code can be moved to  make file.
+
 
 ## Auto-generated Readme:
 This is a sample template for messages-mover - Below is a brief explanation of what we have generated for you:
