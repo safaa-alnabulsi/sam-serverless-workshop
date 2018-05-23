@@ -1,5 +1,14 @@
-Run `docker run -p 9324:9324 -v "$PWD:/etc/elasticmq" s12v/elasticmq` to start a local instance with a source and a target queue. The queues will be available at `localhost:9324/queue/source` 
+## local development
+
+For having the two queues locally we used [ElasticMQ](https://github.com/adamw/elasticmq)
+
+To test a flow you can run `./start.sh`, this script does the following:
 
 
-To test a flow you can run `./start.sh`. This script will startup a docker container called `sqs-mock`. It will then populate the `source` queue in there with two messages. Finally it will stop and cleanup this container. This is of no use at the moment, but can later be used if we add a script that runs the `sam local invoke` command and then verifies that the messages have been moved.
+ 1. creates a docker netwrok
+ 2. startups a docker container called `sqs-mock`. The queues will be available at `localhost:9324/queue/source` and `localhost:9324/queue/target`  
+ 3. populate the `source` queue in there with two messages.
+ 4. invokes the lambda locally
+ 5. tests the messages that have been moved from source queue to target queue.
+ 6. Finally it stops and cleanup this container.
 
