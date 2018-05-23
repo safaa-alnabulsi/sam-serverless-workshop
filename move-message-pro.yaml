@@ -1,0 +1,10 @@
+region: eu-central-1
+# Changing the policy only works if the cf sync doesn't rollback. Ie. if a sync fails, you have to do an empty sync to change the policy and then try sync again.
+stack-policy-url: policies/only-modify-stack-policy.json
+stacks:
+  cma-db-tuv:
+    template-url: ./template-packaged.yaml
+    timeout: 1200
+    parameters:
+      SourceQueueURL: !Ref SafaaSourceQueue
+      TargetQueueURL: !Ref SafaaTargetQueue
