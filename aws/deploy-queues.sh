@@ -1,4 +1,4 @@
-if [ $# -lt 3 ]; then
+if [ $# -lt 1 ]; then
   echo 1>&2 "$0: not enough arguments"
   echo "Please provide the name of the stack as input parameter."
   exit 2

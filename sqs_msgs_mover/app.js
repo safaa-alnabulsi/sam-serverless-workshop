@@ -4,7 +4,6 @@ let response;
 var AWS_REGION = "eu-west-1"
 var SOURCE_QUEUE_URL = process.env.SOURCE_QUEUE_URL
 var TARGET_QUEUE_URL = process.env.TARGET_QUEUE_URL
-var STAGE = process.env.STAGE
 
 // Load the AWS SDK for Node.js
 var AWS = require('aws-sdk');

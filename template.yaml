@@ -13,8 +13,6 @@ Parameters:
         Type: String
     TargetQueueUrl:
         Type: String
-    Stage:
-        Type: String
 
 Resources:
 
@@ -28,7 +26,6 @@ Resources:
                 Variables:
                     SOURCE_QUEUE_URL: !Ref SourceQueueUrl
                     TARGET_QUEUE_URL: !Ref TargetQueueUrl
-                    STAGE: !Ref Stage
 
             Events:
                 # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
